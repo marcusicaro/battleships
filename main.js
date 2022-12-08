@@ -1,0 +1,1 @@
+(()=>{var t={138:t=>{t.exports=(t,s,r)=>({shipĹength:t,hits:s,sunk:r,hit(){return this.hits+=1},isSunk(){if(this.hits===this.shipĹength)return this.sunk="yes"}})}},s={};!function r(i){var e=s[i];if(void 0!==e)return e.exports;var h=s[i]={exports:{}};return t[i](h,h.exports,r),h.exports}(138)})();
