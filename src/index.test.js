@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 const Ship = require('./ship');
 const Gameboard = require('./gameboard');
+const Player = require('./player');
 
 it('testing ship', () => {
   const shipTest = Ship(2, 0, 'no');
@@ -43,4 +44,11 @@ it('testing gameboard', () => {
   // gameboard.receiveAttack(gameboard.board[3]);
   // gameboard.receiveAttack(gameboard.board[4]);
   // gameboard.displayMissedAttacks();
+});
+
+it('test Player function', () => {
+  const playerF = Player();
+  expect(playerF.currentPlayer).toBe('player');
+  playerF.play();
+  expect(playerF.currentPlayer).toBe('PC');
 });

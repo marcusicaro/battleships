@@ -2,8 +2,6 @@
 /* eslint-disable no-return-assign */
 const Gameboard = () => {
   const board = [];
-  // ships: [],
-  // boardShips(...allShips) { allShips.forEach((el) => this.ships.push(el)); },
   function populateBoard() {
     for (let i = 1; i < 10; i++) {
       for (let a = 1; a < 10; a++) {
@@ -35,6 +33,7 @@ const Gameboard = () => {
     });
   }
 
+  // display a list with all sunken ships
   function displaySunkenShips() {
     let result = 0;
     this.board.forEach((el) => {

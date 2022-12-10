@@ -1,7 +1,7 @@
 /* eslint-disable prefer-const */
 /* eslint-disable no-return-assign */
 const Ship = (lngt, hts, snk) => {
-  let shipĹength = lngt;
+  const shipĹength = lngt;
   let hits = hts;
   let sunk = snk;
   function hit() {
