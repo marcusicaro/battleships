@@ -3,8 +3,8 @@
 const Gameboard = () => {
   const board = [];
   function populateBoard() {
-    for (let i = 1; i < 10; i++) {
-      for (let a = 1; a < 10; a++) {
+    for (let i = 1; i <= 10; i++) {
+      for (let a = 1; a <= 10; a++) {
         this.board.push([i, a]);
       }
     }
@@ -13,15 +13,15 @@ const Gameboard = () => {
   // place a ship on of the board elements
   function placeShip(value, ship) { return value.ship = ship; }
 
-  // checks if the attack hit a ship or not and changes the coordinate status
-  function receiveAttack(coordinate) {
-    if (coordinate.ship) {
-      coordinate.shot = true;
-      coordinate.ship.hit();
-      coordinate.ship.isSunk();
+  // checks if the attack hit a ship or not and changes the boardCoordinate status
+  function receiveAttack(boardCoordinate) {
+    if (boardCoordinate.ship) {
+      boardCoordinate.shot = true;
+      boardCoordinate.ship.hit();
+      return boardCoordinate.ship.isSunk();
     }
-    coordinate.shot = true;
-    return coordinate.missedShot = true;
+    boardCoordinate.shot = true;
+    return boardCoordinate.missedShot = true;
   }
 
   // shows all missed attacks on the screen

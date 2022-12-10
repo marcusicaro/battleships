@@ -4,19 +4,30 @@ const Player = () => {
   const computer = 'PC';
   let currentPlayer = player;
 
-  function play() {
-    if (this.currentPlayer === player) {
-      this.currentPlayer = computer;
+  let play = () => {
+    if (currentPlayer === player) {
+      currentPlayer = computer;
       return currentPlayer;
     }
-    this.currentPlayer = player;
+    currentPlayer = player;
     return currentPlayer;
-  }
+  };
 
-  function AIPlay() { 'asda'; }
+  let AIPlay = (gameboard) => {
+    let randomNuber = Math.floor(Math.random() * 100);
+    if (!gameboard.board[randomNuber].shot) {
+    //   console.log(randomNuber);
+      gameboard.receiveAttack(randomNuber);
+      currentPlayer = player;
+      return currentPlayer;
+    }
+    return AIPlay(gameboard);
+  };
+
+  let getCurrentPlayer = () => currentPlayer;
 
   return {
-    currentPlayer, play, AIPlay,
+    play, AIPlay, getCurrentPlayer,
   };
 };
 
