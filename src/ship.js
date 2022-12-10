@@ -1,3 +1,4 @@
+/* eslint-disable no-return-assign */
 const Ship = (shipĹength, hits, sunk) => ({
   shipĹength,
   hits,
@@ -11,10 +12,5 @@ const Ship = (shipĹength, hits, sunk) => ({
     }
   },
 });
-
-const Gameboard = (ship) => {
-  const placeShip = () => ship;
-  return { placeShip };
-};
 
 module.exports = Ship;
