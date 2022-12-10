@@ -1,23 +1,58 @@
 /* eslint-disable no-plusplus */
 /* eslint-disable no-return-assign */
-const Gameboard = () => ({
-  board: [],
-  populateBoard() {
+const Gameboard = () => {
+  const board = [];
+  // ships: [],
+  // boardShips(...allShips) { allShips.forEach((el) => this.ships.push(el)); },
+  function populateBoard() {
     for (let i = 1; i < 10; i++) {
       for (let a = 1; a < 10; a++) {
         this.board.push([i, a]);
       }
     }
-  },
+  }
 
-  placeShip(value, ship) { return value.ship = ship; },
+  // place a ship on of the board elements
+  function placeShip(value, ship) { return value.ship = ship; }
 
-  receiveAttack(coordinate) {
+  // checks if the attack hit a ship or not and changes the coordinate status
+  function receiveAttack(coordinate) {
     if (coordinate.ship) {
-      returncoordinate.ship.hit();
+      coordinate.shot = true;
+      coordinate.ship.hit();
+      coordinate.ship.isSunk();
     }
+    coordinate.shot = true;
     return coordinate.missedShot = true;
-  },
-});
+  }
+
+  // shows all missed attacks on the screen
+  function displayMissedAttacks() {
+    this.board.forEach((el) => {
+      if (el.missedShot === true) {
+        console.log(el);
+      }
+    });
+  }
+
+  function displaySunkenShips() {
+    let result = 0;
+    this.board.forEach((el) => {
+      if (el.ship) {
+        if (el.ship.sunk === 'yes') {
+          result += 1;
+        }
+      }
+    });
+    if (result === 2) {
+      return console.log('all ships are sunk');
+    }
+    return console.log('NOT ALL SHIPS ARE SUNK DAMN');
+  }
+
+  return {
+    board, populateBoard, placeShip, receiveAttack, displayMissedAttacks, displaySunkenShips,
+  };
+};
 
 module.exports = Gameboard;

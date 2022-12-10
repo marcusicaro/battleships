@@ -12,19 +12,35 @@ it('testing ship', () => {
 
 it('testing gameboard', () => {
   const ship1 = Ship(2, 0, 'no');
-  const gameboard = Gameboard(ship1);
+  const ship2 = Ship(1, 0, 'no');
+  // const ship3 = Ship(3, 0, 'no');
+  const gameboard = Gameboard();
+
+  // assign ships to board
+  // gameboard.boardShips(ship1, ship2, ship3);
+  // expect(gameboard.ships).toEqual([ship1, ship2, ship3]);
+
   gameboard.populateBoard();
 
   expect(gameboard.board[0]).toEqual([1, 1]);
   expect(gameboard.board[1]).toEqual([1, 2]);
 
-  // places a ship for test
+  // places ships for test
   gameboard.placeShip(gameboard.board[0], ship1);
+  gameboard.placeShip(gameboard.board[1], ship2);
 
   // test attack on ship
-  expect(gameboard.receiveAttack(1, 1)).toBe(1);
-
-  // test missed attack
+  gameboard.receiveAttack(gameboard.board[0]);
   gameboard.receiveAttack(gameboard.board[1]);
-  expect(gameboard.board[1].missedShot).toBe(true);
+  expect(gameboard.board[1].ship.sunk).toBe('yes');
+  gameboard.displaySunkenShips();
+  // expect(gameboard.board[0].shot).toBe(true);
+
+  // // test missed attack
+  // gameboard.receiveAttack(gameboard.board[1]);
+  // expect(gameboard.board[1].shot).toBe(true);
+
+  // gameboard.receiveAttack(gameboard.board[3]);
+  // gameboard.receiveAttack(gameboard.board[4]);
+  // gameboard.displayMissedAttacks();
 });
