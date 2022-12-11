@@ -11,17 +11,17 @@ const Gameboard = () => {
   }
 
   // place a ship on of the board elements
-  function placeShip(value, ship) { return value.ship = ship; }
+  function placeShip(location, ship) { return this.board[location].ship = ship; }
 
   // checks if the attack hit a ship or not and changes the boardCoordinate status
-  function receiveAttack(boardCoordinate) {
-    if (boardCoordinate.ship) {
-      boardCoordinate.shot = true;
-      boardCoordinate.ship.hit();
-      return boardCoordinate.ship.isSunk();
+  function receiveAttack(location) {
+    if (this.board[location].ship) {
+      this.board[location].shot = true;
+      this.board[location].ship.hit();
+      return this.board[location].ship.isSunk();
     }
-    boardCoordinate.shot = true;
-    return boardCoordinate.missedShot = true;
+    this.board[location].shot = true;
+    return this.board[location].missedShot = true;
   }
 
   // shows all missed attacks on the screen
@@ -43,7 +43,7 @@ const Gameboard = () => {
         }
       }
     });
-    if (result === 2) {
+    if (result === 3) {
       return console.log('all ships are sunk');
     }
     return console.log('NOT ALL SHIPS ARE SUNK DAMN');
