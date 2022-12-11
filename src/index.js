@@ -23,9 +23,8 @@ function createPlayerSquares() {
 function squareClick(square) {
   alert(CPUBoard.board[square.target.id]);
   CPUBoard.receiveAttack(square.target.id);
-  CPUBoard.displaySunkenShips();
   CPUPlayer.AIPlay(playerBoard);
-  playerBoard.displaySunkenShips();
+  endGame();
 }
 
 function createCPUSquares() {
@@ -45,13 +44,42 @@ function fillBoards() {
 fillBoards();
 
 function placeShips(board) {
-  const firstShip = Ship(1, 0, 'no');
-  const secondShip = Ship(1, 0, 'no');
-  const thirdShip = Ship(1, 0, 'no');
-  board.placeShip(0, firstShip);
-  board.placeShip(1, secondShip);
-  board.placeShip(2, thirdShip);
+  const firstPatrol = Ship(1, 0, 'no');
+  const secondPatrol = Ship(1, 0, 'no');
+  const thirdPatrol = Ship(1, 0, 'no');
+  const fourthPatrol = Ship(1, 0, 'no');
+  const firstSubmarine = Ship(2, 0, 'no');
+  const secondSubmarine = Ship(2, 0, 'no');
+  const thirdSubmarine = Ship(2, 0, 'no');
+  const firstCruiser = Ship(3, 0, 'no');
+  const secondCruiser = Ship(3, 0, 'no');
+  const firstBattleship = Ship(4, 0, 'no');
+  board.placeShip(0, firstPatrol);
+  board.placeShip(2, secondPatrol);
+  board.placeShip(4, thirdPatrol);
+  board.placeShip(6, fourthPatrol);
+  board.placeShip(8, firstSubmarine);
+  board.placeShip(11, secondSubmarine);
+  board.placeShip(14, thirdSubmarine);
+  board.placeShip(17, firstCruiser);
+  board.placeShip(20, secondCruiser);
+  board.placeShip(24, firstBattleship);
 }
 
+// function chooseShipPlace(...shipName) {
+//   for (let i = 0; i < shipName.length; i++) {
+//     CPUBoard.placeShip;
+//   }
+// }
+
 placeShips(CPUBoard);
-placeShips(playerBoard);
+// placeShips(playerBoard);
+
+function endGame() {
+  if (CPUBoard.displaySunkenShips() === 20) {
+    return alert('Game over, you won.');
+  }
+  if (playerBoard.displaySunkenShips() === 20) {
+    return alert('Game over, CPU won');
+  }
+}

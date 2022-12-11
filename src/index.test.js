@@ -3,16 +3,16 @@ const Ship = require('./ship');
 const Gameboard = require('./gameboard');
 const Player = require('./player');
 
-it('test Player function', () => {
-  const playerTestGameboard = Gameboard();
-  playerTestGameboard.populateBoard();
+// it('test Player function', () => {
+//   const playerTestGameboard = Gameboard();
+//   playerTestGameboard.populateBoard();
 
-  const playerF = Player();
-  expect(playerF.getCurrentPlayer()).toBe('player');
-  playerF.play();
-  expect(playerF.getCurrentPlayer()).toBe('PC');
-  expect(playerF.AIPlay(playerTestGameboard)).toBe('player');
-});
+//   const playerF = Player();
+//   expect(playerF.getCurrentPlayer()).toBe('player');
+//   playerF.play();
+//   expect(playerF.getCurrentPlayer()).toBe('PC');
+//   expect(playerF.AIPlay(playerTestGameboard)).toBe('player');
+// });
 
 it('testing gameboard', () => {
   const ship1 = Ship(2, 0, 'no');
@@ -30,12 +30,12 @@ it('testing gameboard', () => {
   expect(gameboard.board[1]).toEqual([1, 2]);
 
   // places ships for test
-  gameboard.placeShip(gameboard.board[0], ship1);
-  gameboard.placeShip(gameboard.board[1], ship2);
+  gameboard.placeShip(0, ship1);
+  gameboard.placeShip(1, ship2);
 
   // test attack on ship
-  gameboard.receiveAttack(gameboard.board[0]);
-  gameboard.receiveAttack(gameboard.board[1]);
+  gameboard.receiveAttack(0);
+  gameboard.receiveAttack(1);
   expect(gameboard.board[1].ship.sunk).toBe('yes');
   gameboard.displaySunkenShips();
   // expect(gameboard.board[0].shot).toBe(true);

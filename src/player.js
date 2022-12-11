@@ -17,7 +17,7 @@ const Player = () => {
     let randomNuber = Math.floor(Math.random() * 100);
     if (!gameboard.board[randomNuber].shot) {
       gameboard.receiveAttack(randomNuber);
-      console.log(gameboard.board[randomNuber]);
+      // console.log(gameboard.board[randomNuber]);
       // currentPlayer = player;
       // return currentPlayer;
       return;

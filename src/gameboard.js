@@ -11,7 +11,24 @@ const Gameboard = () => {
   }
 
   // place a ship on of the board elements
-  function placeShip(location, ship) { return this.board[location].ship = ship; }
+  function placeShip(location, ship) {
+    if (ship.shipĹength === 1) { return this.board[location].ship = ship; }
+    if (ship.shipĹength === 2) {
+      this.board[location].ship = ship;
+      return this.board[location + 1].ship = ship;
+    }
+    if (ship.shipĹength === 3) {
+      this.board[location].ship = ship;
+      this.board[location + 1].ship = ship;
+      return this.board[location + 2].ship = ship;
+    }
+    if (ship.shipĹength === 4) {
+      this.board[location].ship = ship;
+      this.board[location + 1].ship = ship;
+      this.board[location + 2].ship = ship;
+      return this.board[location + 3].ship = ship;
+    }
+  }
 
   // checks if the attack hit a ship or not and changes the boardCoordinate status
   function receiveAttack(location) {
@@ -43,10 +60,7 @@ const Gameboard = () => {
         }
       }
     });
-    if (result === 3) {
-      return console.log('all ships are sunk');
-    }
-    return console.log('NOT ALL SHIPS ARE SUNK DAMN');
+    return result;
   }
 
   return {
