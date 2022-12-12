@@ -52,13 +52,13 @@ const Gameboard = () => {
 
   // display a list with all sunken ships
   function displaySunkenShips() {
-    let result = true;
+    let theReturn = true;
     for (let i = 0; i < 99; i++) {
       if (this.board[i].ship) {
-        if (this.board[i].ship.sunk === 'no') { result = false; }
+        if (this.board[i].ship.sunk === 'no') { return theReturn = false; }
       }
     }
-    return result;
+    return theReturn;
   }
 
   return {

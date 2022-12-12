@@ -17,7 +17,7 @@ const thirdSubmarine = Ship(2, 0, 'no');
 const firstCruiser = Ship(3, 0, 'no');
 const secondCruiser = Ship(3, 0, 'no');
 const firstBattleship = Ship(4, 0, 'no');
-const shipsArray = [firstPatrol, secondPatrol, thirdPatrol, fourthPatrol, firstSubmarine, secondSubmarine, thirdSubmarine, firstCruiser, secondCruiser, firstBattleship];
+// const shipsArray = [firstPatrol, secondPatrol, thirdPatrol, fourthPatrol, firstSubmarine, secondSubmarine, thirdSubmarine, firstCruiser, secondCruiser, firstBattleship];
 let id = 0;
 let playerID = 100;
 let playerIDtoPlaceShip = 0;
@@ -75,25 +75,37 @@ function fillBoards() {
 fillBoards();
 
 function createCPUSquad(board) {
-  const CPUShipsArray = shipsArray;
-  board.placeShip(0, CPUShipsArray[0]);
-  board.placeShip(2, CPUShipsArray[1]);
-  board.placeShip(4, CPUShipsArray[2]);
-  board.placeShip(6, CPUShipsArray[3]);
-  board.placeShip(8, CPUShipsArray[4]);
-  board.placeShip(11, CPUShipsArray[5]);
-  board.placeShip(14, CPUShipsArray[6]);
-  board.placeShip(17, CPUShipsArray[7]);
-  board.placeShip(20, CPUShipsArray[8]);
-  board.placeShip(24, CPUShipsArray[9]);
+  const firstPatrol = Ship(1, 0, 'no');
+  const secondPatrol = Ship(1, 0, 'no');
+  const thirdPatrol = Ship(1, 0, 'no');
+  const fourthPatrol = Ship(1, 0, 'no');
+  const firstSubmarine = Ship(2, 0, 'no');
+  const secondSubmarine = Ship(2, 0, 'no');
+  const thirdSubmarine = Ship(2, 0, 'no');
+  const firstCruiser = Ship(3, 0, 'no');
+  const secondCruiser = Ship(3, 0, 'no');
+  const firstBattleship = Ship(4, 0, 'no');
+  board.placeShip(1, firstPatrol);
+  board.placeShip(2, secondPatrol);
+  board.placeShip(4, thirdPatrol);
+  board.placeShip(6, fourthPatrol);
+  board.placeShip(8, firstSubmarine);
+  board.placeShip(11, secondSubmarine);
+  board.placeShip(14, thirdSubmarine);
+  board.placeShip(17, firstCruiser);
+  board.placeShip(20, secondCruiser);
+  board.placeShip(24, firstBattleship);
 }
 
 createCPUSquad(CPUBoard);
 
 function endGame() {
+  console.log(CPUBoard.board);
   if (CPUBoard.displaySunkenShips() === true) {
+    console.log(CPUBoard.board);
     return alert('Game over, you won.');
   }
+  // console.log(playerBoard.board);
   if (playerBoard.displaySunkenShips() === true) {
     return alert('Game over, CPU won');
   }
@@ -159,18 +171,42 @@ function placePlayerShip(ship, name) {
   return playerBoard.placeShip(userIndex, ship);
 }
 
+// function createPlayerSquad() {
+//   const playerShipsArray = shipsArray;
+//   // placePlayerShip(playerShipsArray[0], 'First Patrol');
+//   // placePlayerShip(playerShipsArray[1], 'Second Patrol');
+//   // placePlayerShip(playerShipsArray[2], 'Third Patrol');
+//   // placePlayerShip(playerShipsArray[3], 'Fourth Patrol');
+//   // placePlayerShip(playerShipsArray[4], 'First Submarine');
+//   // placePlayerShip(playerShipsArray[5], 'Second Submarine');
+//   // placePlayerShip(playerShipsArray[6], 'Third Submarine');
+//   // placePlayerShip(playerShipsArray[7], 'First Cruiser');
+//   // placePlayerShip(playerShipsArray[8], 'Second Cruiser');
+//   // placePlayerShip(playerShipsArray[9], 'First Battleship');
+// }
+
+// temporary player board
 function createPlayerSquad() {
-  const playerShipsArray = shipsArray;
-  placePlayerShip(playerShipsArray[0], 'First Patrol');
-  placePlayerShip(playerShipsArray[1], 'Second Patrol');
-  placePlayerShip(playerShipsArray[2], 'Third Patrol');
-  placePlayerShip(playerShipsArray[3], 'Fourth Patrol');
-  placePlayerShip(playerShipsArray[4], 'First Submarine');
-  placePlayerShip(playerShipsArray[5], 'Second Submarine');
-  placePlayerShip(playerShipsArray[6], 'Third Submarine');
-  placePlayerShip(playerShipsArray[7], 'First Cruiser');
-  placePlayerShip(playerShipsArray[8], 'Second Cruiser');
-  placePlayerShip(playerShipsArray[9], 'First Battleship');
+  const firstPatrol = Ship(1, 0, 'no');
+  const secondPatrol = Ship(1, 0, 'no');
+  const thirdPatrol = Ship(1, 0, 'no');
+  const fourthPatrol = Ship(1, 0, 'no');
+  const firstSubmarine = Ship(2, 0, 'no');
+  const secondSubmarine = Ship(2, 0, 'no');
+  const thirdSubmarine = Ship(2, 0, 'no');
+  const firstCruiser = Ship(3, 0, 'no');
+  const secondCruiser = Ship(3, 0, 'no');
+  const firstBattleship = Ship(4, 0, 'no');
+  playerBoard.placeShip(0, firstPatrol);
+  playerBoard.placeShip(2, secondPatrol);
+  // playerBoard.placeShip(4, thirdPatrol);
+  // playerBoard.placeShip(6, fourthPatrol);
+  // playerBoard.placeShip(8, firstSubmarine);
+  // playerBoard.placeShip(11, secondSubmarine);
+  // playerBoard.placeShip(14, thirdSubmarine);
+  // playerBoard.placeShip(17, firstCruiser);
+  // playerBoard.placeShip(20, secondCruiser);
+  // playerBoard.placeShip(24, firstBattleship);
 }
 
-createPlayerSquad(playerBoard);
+createPlayerSquad();
