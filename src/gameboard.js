@@ -52,14 +52,12 @@ const Gameboard = () => {
 
   // display a list with all sunken ships
   function displaySunkenShips() {
-    let result = 0;
-    this.board.forEach((el) => {
-      if (el.ship) {
-        if (el.ship.sunk === 'yes') {
-          result += 1;
-        }
+    let result = true;
+    for (let i = 0; i < 99; i++) {
+      if (this.board[i].ship) {
+        if (this.board[i].ship.sunk === 'no') { result = false; }
       }
-    });
+    }
     return result;
   }
 

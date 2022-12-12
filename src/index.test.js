@@ -15,7 +15,7 @@ const Player = require('./player');
 // });
 
 it('testing gameboard', () => {
-  const ship1 = Ship(2, 0, 'no');
+  const ship1 = Ship(1, 0, 'no');
   const ship2 = Ship(1, 0, 'no');
   // const ship3 = Ship(3, 0, 'no');
   const gameboard = Gameboard();
@@ -34,15 +34,17 @@ it('testing gameboard', () => {
   gameboard.placeShip(1, ship2);
 
   // test attack on ship
-  gameboard.receiveAttack(0);
+  // gameboard.receiveAttack(0);
   gameboard.receiveAttack(1);
   expect(gameboard.board[1].ship.sunk).toBe('yes');
-  gameboard.displaySunkenShips();
+  expect(gameboard.board[0].ship.sunk).toBe('no');
+  expect(gameboard.displaySunkenShips()).toBe(false);
+  // gameboard.displaySunkenShips();
   // expect(gameboard.board[0].shot).toBe(true);
 
   // // test missed attack
-  gameboard.receiveAttack(gameboard.board[10]);
-  expect(gameboard.board[1].shot).toBe(true);
+  gameboard.receiveAttack(10);
+  expect(gameboard.board[10].shot).toBe(true);
 
   // gameboard.receiveAttack(gameboard.board[3]);
   // gameboard.receiveAttack(gameboard.board[4]);
