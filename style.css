@@ -28,3 +28,11 @@ main {
     height: 50px;
     border: 1px solid black;
 }
+
+.hit {
+    background-color: black;
+}
+
+.player-ship {
+    background-color: blue;
+}
