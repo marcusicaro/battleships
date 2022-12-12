@@ -108,11 +108,34 @@ function placePlayerShip(ship, name) {
     return x;
   };
   const ySearch = () => {
-    const y = prompt(`${name} y location: Please enter a number between 1 - 10`);
-    if (!(y <= 10 && y >= 1) || Number(y) !== Math.round(y)) {
-      return xSearch();
+    if (ship.shipĹength === 1) {
+      const y = prompt(`${name} y location: Please enter a number between 1 - 10`);
+      if (!(y <= 10 && y >= 1) || Number(y) !== Math.round(y)) {
+        return xSearch();
+      }
+      return y;
     }
-    return y;
+    if (ship.shipĹength === 2) {
+      const y = prompt(`${name} y location: Please enter a number between 1 - 9`);
+      if (!(y <= 9 && y >= 1) || Number(y) !== Math.round(y)) {
+        return xSearch();
+      }
+      return y;
+    }
+    if (ship.shipĹength === 3) {
+      const y = prompt(`${name} y location: Please enter a number between 1 - 8`);
+      if (!(y <= 8 && y >= 1) || Number(y) !== Math.round(y)) {
+        return xSearch();
+      }
+      return y;
+    }
+    if (ship.shipĹength === 4) {
+      const y = prompt(`${name} y location: Please enter a number between 1 - 7`);
+      if (!(y <= 7 && y >= 1) || Number(y) !== Math.round(y)) {
+        return xSearch();
+      }
+      return y;
+    }
   };
   const xValue = Number(xSearch());
   const yValue = Number(ySearch());
@@ -136,35 +159,18 @@ function placePlayerShip(ship, name) {
   return playerBoard.placeShip(userIndex, ship);
 }
 
-// function createPlayerSquad() {
-//   const playerShipsArray = shipsArray;
-//   placePlayerShip(playerShipsArray[0], 'First Patrol');
-//   placePlayerShip(playerShipsArray[1], 'Second Patrol');
-//   placePlayerShip(playerShipsArray[2], 'Third Patrol');
-//   placePlayerShip(playerShipsArray[3], 'Fourth Patrol');
-//   placePlayerShip(playerShipsArray[4], 'First Submarine');
-//   placePlayerShip(playerShipsArray[5], 'Second Submarine');
-//   placePlayerShip(playerShipsArray[6], 'Third Submarine');
-//   placePlayerShip(playerShipsArray[7], 'First Cruiser');
-//   placePlayerShip(playerShipsArray[8], 'Second Cruiser');
-//   placePlayerShip(playerShipsArray[9], 'First Battleship');
-// }
-
-// createPlayerSquad();
-
-// temporary player board
-function createPlayerSquad(board) {
-  const CPUShipsArray = shipsArray;
-  board.placeShip(0, CPUShipsArray[0]);
-  board.placeShip(2, CPUShipsArray[1]);
-  board.placeShip(4, CPUShipsArray[2]);
-  board.placeShip(6, CPUShipsArray[3]);
-  board.placeShip(8, CPUShipsArray[4]);
-  board.placeShip(11, CPUShipsArray[5]);
-  board.placeShip(14, CPUShipsArray[6]);
-  board.placeShip(17, CPUShipsArray[7]);
-  board.placeShip(20, CPUShipsArray[8]);
-  board.placeShip(24, CPUShipsArray[9]);
+function createPlayerSquad() {
+  const playerShipsArray = shipsArray;
+  placePlayerShip(playerShipsArray[0], 'First Patrol');
+  placePlayerShip(playerShipsArray[1], 'Second Patrol');
+  placePlayerShip(playerShipsArray[2], 'Third Patrol');
+  placePlayerShip(playerShipsArray[3], 'Fourth Patrol');
+  placePlayerShip(playerShipsArray[4], 'First Submarine');
+  placePlayerShip(playerShipsArray[5], 'Second Submarine');
+  placePlayerShip(playerShipsArray[6], 'Third Submarine');
+  placePlayerShip(playerShipsArray[7], 'First Cruiser');
+  placePlayerShip(playerShipsArray[8], 'Second Cruiser');
+  placePlayerShip(playerShipsArray[9], 'First Battleship');
 }
 
 createPlayerSquad(playerBoard);
