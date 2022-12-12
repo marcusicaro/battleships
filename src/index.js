@@ -7,16 +7,16 @@ const CPUSquare = document.getElementById('CPU');
 const CPUPlayer = Player();
 const playerBoard = Gameboard();
 const CPUBoard = Gameboard();
-const firstPatrol = Ship(1, 0, 'no');
-const secondPatrol = Ship(1, 0, 'no');
-const thirdPatrol = Ship(1, 0, 'no');
-const fourthPatrol = Ship(1, 0, 'no');
-const firstSubmarine = Ship(2, 0, 'no');
-const secondSubmarine = Ship(2, 0, 'no');
-const thirdSubmarine = Ship(2, 0, 'no');
-const firstCruiser = Ship(3, 0, 'no');
-const secondCruiser = Ship(3, 0, 'no');
-const firstBattleship = Ship(4, 0, 'no');
+// const firstPatrol = Ship(1, 0, 'no');
+// const secondPatrol = Ship(1, 0, 'no');
+// const thirdPatrol = Ship(1, 0, 'no');
+// const fourthPatrol = Ship(1, 0, 'no');
+// const firstSubmarine = Ship(2, 0, 'no');
+// const secondSubmarine = Ship(2, 0, 'no');
+// const thirdSubmarine = Ship(2, 0, 'no');
+// const firstCruiser = Ship(3, 0, 'no');
+// const secondCruiser = Ship(3, 0, 'no');
+// const firstBattleship = Ship(4, 0, 'no');
 // const shipsArray = [firstPatrol, secondPatrol, thirdPatrol, fourthPatrol, firstSubmarine, secondSubmarine, thirdSubmarine, firstCruiser, secondCruiser, firstBattleship];
 let id = 0;
 let playerID = 100;
@@ -54,6 +54,7 @@ function checkForAttacks(a) {
       const IDattacked = a.board.indexOf(el);
       const paintAttackOnPlayer = document.getElementById(IDattacked + 100);
       paintAttackOnPlayer.classList.add('hit');
+      paintAttackOnPlayer.classList.remove('player-ship');
     }
   });
 }
@@ -171,21 +172,6 @@ function placePlayerShip(ship, name) {
   return playerBoard.placeShip(userIndex, ship);
 }
 
-// function createPlayerSquad() {
-//   const playerShipsArray = shipsArray;
-//   // placePlayerShip(playerShipsArray[0], 'First Patrol');
-//   // placePlayerShip(playerShipsArray[1], 'Second Patrol');
-//   // placePlayerShip(playerShipsArray[2], 'Third Patrol');
-//   // placePlayerShip(playerShipsArray[3], 'Fourth Patrol');
-//   // placePlayerShip(playerShipsArray[4], 'First Submarine');
-//   // placePlayerShip(playerShipsArray[5], 'Second Submarine');
-//   // placePlayerShip(playerShipsArray[6], 'Third Submarine');
-//   // placePlayerShip(playerShipsArray[7], 'First Cruiser');
-//   // placePlayerShip(playerShipsArray[8], 'Second Cruiser');
-//   // placePlayerShip(playerShipsArray[9], 'First Battleship');
-// }
-
-// temporary player board
 function createPlayerSquad() {
   const firstPatrol = Ship(1, 0, 'no');
   const secondPatrol = Ship(1, 0, 'no');
@@ -197,16 +183,16 @@ function createPlayerSquad() {
   const firstCruiser = Ship(3, 0, 'no');
   const secondCruiser = Ship(3, 0, 'no');
   const firstBattleship = Ship(4, 0, 'no');
-  playerBoard.placeShip(0, firstPatrol);
-  playerBoard.placeShip(2, secondPatrol);
-  // playerBoard.placeShip(4, thirdPatrol);
-  // playerBoard.placeShip(6, fourthPatrol);
-  // playerBoard.placeShip(8, firstSubmarine);
-  // playerBoard.placeShip(11, secondSubmarine);
-  // playerBoard.placeShip(14, thirdSubmarine);
-  // playerBoard.placeShip(17, firstCruiser);
-  // playerBoard.placeShip(20, secondCruiser);
-  // playerBoard.placeShip(24, firstBattleship);
+  placePlayerShip(firstPatrol, 'First Patrol');
+  placePlayerShip(secondPatrol, 'Second Patrol');
+  placePlayerShip(thirdPatrol, 'Third Patrol');
+  placePlayerShip(fourthPatrol, 'Fourth Patrol');
+  placePlayerShip(firstSubmarine, 'First Submarine');
+  placePlayerShip(secondSubmarine, 'Second Submarine');
+  placePlayerShip(thirdSubmarine, 'Third Submarine');
+  placePlayerShip(firstCruiser, 'First Cruiser');
+  placePlayerShip(secondCruiser, 'Second Cruiser');
+  placePlayerShip(firstBattleship, 'First Battleship');
 }
 
 createPlayerSquad();
